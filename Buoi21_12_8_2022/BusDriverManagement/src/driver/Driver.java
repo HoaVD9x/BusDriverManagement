@@ -16,6 +16,8 @@ public class Driver implements InputTable {
 
     private DriverLevel driverLevel;
 
+    public Driver (){};
+
     public Driver(int driver_id, String name, String address, int phoneNumber, DriverLevel driverLevel) {
         this.driver_id = driver_id;
         this.name = name;

@@ -1,3 +1,5 @@
+package mainBusDriverManagent;
+
 import busDriverManagement.BusDriverManagement;
 import driver.Driver;
 import route.Route;
@@ -8,11 +10,10 @@ import java.util.Scanner;
 
 public class Main {
 
-    public  static List<Driver> driverList = new ArrayList<>();
 
-    public  static  List<Route> routeList = new ArrayList<>();
 
-    public  static List <BusDriverManagement > busDriverManagementList= new ArrayList<>();
+
+    public  static List <BusDriverManagement> busDriverManagementList= new ArrayList<>();
 
 
     public static void main(String[] args) {
@@ -29,7 +30,7 @@ public class Main {
             switch (functionChoice){
                 case 1:
                     break;
-                    case 2:
+                case 2:
                     break;
                 case 3:
                     break;

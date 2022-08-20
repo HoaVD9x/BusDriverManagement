@@ -13,6 +13,7 @@ public class Route implements InputTable {
     private  int distance;
 
     private int numberOfBusStop;
+    public  Route ( ) {};
 
     public Route(int route_ID, int distance, int numberOfBusStop) {
         this.route_ID = route_ID;
