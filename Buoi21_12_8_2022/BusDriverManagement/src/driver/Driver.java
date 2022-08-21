@@ -80,12 +80,12 @@ public class Driver implements InputTable {
         this.showDriverLever();
     }
     public void showDriverLever(){
-        System.out.println("bang lai xe loai A");
-        System.out.println("bang lai xe loai B");
-        System.out.println("bang lai xe loai C");
-        System.out.println("bang lai xe loai D");
-        System.out.println("bang lai xe loai E");
-        System.out.println("bang lai xe loai F");
+        System.out.println("1. bang lai xe loai A");
+        System.out.println("2. bang lai xe loai B");
+        System.out.println("3. bang lai xe loai C");
+        System.out.println("4. bang lai xe loai D");
+        System.out.println("5. bang lai xe loai E");
+        System.out.println("6. bang lai xe loai F");
         int choiceDriverlevel = 0;
         do {
             choiceDriverlevel = new Scanner(System.in).nextInt();
