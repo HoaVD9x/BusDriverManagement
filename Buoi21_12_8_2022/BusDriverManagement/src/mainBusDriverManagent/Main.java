@@ -44,8 +44,10 @@ public class Main {
                     RouteService.showRoute();
                     break;
                 case 5:
+                    BusDriverManagement.busDriverManage();
                     break;
                 case 6:
+                    BusDriverManagement.showBusDriverManagement();
                     break;
                 case 7:
                     break;

@@ -1,6 +1,7 @@
 package busDriverManagement;
 
 import driver.Driver;
+import mainBusDriverManagent.Main;
 import route.Route;
 
 import java.util.Scanner;
@@ -43,7 +44,7 @@ public class BusDriverManagement {
     public static  void busDriverManage (){
         if (DriverService.isEmptyDriver() || RouteService.isEmptyRoute()){
             System.out.println("ban can them lai xe va tuyen duong");
-            return;
+
         }
         System.out.println("nhap so luong lai xe ban muon phan cong vao : ");
         int driverNumber = new Scanner(System.in).nextInt();
@@ -60,7 +61,7 @@ public class BusDriverManagement {
         }
     }
     public static  Driver inputDriverInfo(int order ){
-        System.out.println("nhap ma lai xe thu " + ( order + 1) + "vao");
+        System.out.println("nhap ma lai xe thu " + ( order + 1) + " vao");
         Driver driver = null;
         do {
             int driverId = new Scanner(System.in).nextInt();
@@ -75,6 +76,7 @@ public class BusDriverManagement {
                 break;
             }
             System.out.println("khong tin thay ma lai xe ban vua nhap");
+            System.out.println("xin vui long nhap lai ma lai xe ");
         }while (true);
         return driver;
     }
@@ -85,6 +87,7 @@ public class BusDriverManagement {
         Route route1 = null;
         do {
             int routeNumber = new Scanner(System.in).nextInt();
+            if (routeNumber >= 0 && routeNumber <= 15){
             for (int i = 0; i < routeNumber; i++) {
                 System.out.println("nhap vao ma tuyen duong :");
                 int routeId = new Scanner(System.in).nextInt();
@@ -95,8 +98,24 @@ public class BusDriverManagement {
                 } else {
                     System.out.println("xin vui long nhap lai ");
                 }
+
+                System.out.println("vui long nhap khoang cach di chuyen : ");
+                int distance = new Scanner(System.in).nextInt();
+                System.out.println("vui long nhap so diem dung trong quang duong tren : ");
+                int numberOfBusStop = new Scanner(System.in).nextInt();
+                RouteService.routeList.add(new Route());
+
+            }} else {
+                System.out.println(" xin vui long nhap lai so luong tuyen duong");
             }
         }while (true);
+    }
+
+    public static void showBusDriverManagement (){
+        for (BusDriverManagement busDriverManagement: Main.busDriverManagementList
+             ) {
+            System.out.println(busDriverManagement);
+        }
     }
 
 
