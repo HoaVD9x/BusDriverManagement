@@ -15,7 +15,9 @@ public class Main {
 
 
 
-    public  static List <BusDriverManagement> busDriverManagementList= new ArrayList<>();
+
+
+
 
 
     public static void main(String[] args) {
@@ -45,14 +47,17 @@ public class Main {
                     break;
                 case 5:
                     BusDriverManagement.busDriverManage();
-                    break;
-                case 6:
                     BusDriverManagement.showBusDriverManagement();
                     break;
+                case 6:
+                    BusDriverManagement.sortBusDriverManagent();
+                    break;
                 case 7:
+
                     break;
                 case 8:
                     break;
+
             }
         }while (!isExit);
     }

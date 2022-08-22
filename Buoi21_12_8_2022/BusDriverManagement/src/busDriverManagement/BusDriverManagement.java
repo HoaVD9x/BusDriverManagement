@@ -4,7 +4,7 @@ import driver.Driver;
 import mainBusDriverManagent.Main;
 import route.Route;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class BusDriverManagement {
 
@@ -41,11 +41,12 @@ public class BusDriverManagement {
                 '}';
     }
 
-    public static  void busDriverManage (){
-        if (DriverService.isEmptyDriver() || RouteService.isEmptyRoute()){
-            System.out.println("ban can them lai xe va tuyen duong");
+    static List<BusDriverManagement> busDriverManagementList = new ArrayList<>();
 
-        }
+
+
+    public static  void busDriverManage (){
+
         System.out.println("nhap so luong lai xe ban muon phan cong vao : ");
         int driverNumber = new Scanner(System.in).nextInt();
 
@@ -56,6 +57,8 @@ public class BusDriverManagement {
 
             // them n tuyen duong ma ban muon them vao
             Route route = inputRouteInfo();
+            BusDriverManagement busDriverManagement = new BusDriverManagement(drivers, route);
+            busDriverManagementList.add(busDriverManagement);
 
 
         }
@@ -84,37 +87,80 @@ public class BusDriverManagement {
     public static Route inputRouteInfo(){
         System.out.println("nhap so luong tuyen duong ban muon them vao :");
 
-        Route route1 = null;
+
         do {
             int routeNumber = new Scanner(System.in).nextInt();
-            if (routeNumber >= 0 && routeNumber <= 15){
-            for (int i = 0; i < routeNumber; i++) {
-                System.out.println("nhap vao ma tuyen duong :");
-                int routeId = new Scanner(System.in).nextInt();
-                if (RouteService.routeList.get(i) != null && RouteService.routeList.get(i).getRoute_ID() == routeId){
-                    route1 = RouteService.routeList.get(i);
+            do {
+                if (routeNumber >= 0 && routeNumber <= 15){
                     break;
-
-                } else {
-                    System.out.println("xin vui long nhap lai ");
                 }
+                System.out.println(" hay nhap lai cho dung 1 lai xe chi co the lai duoc 15 chuyen 1 ngay ");
+            }while (true);
 
-                System.out.println("vui long nhap khoang cach di chuyen : ");
+            for (int i = 0; i < routeNumber; i++) {
+                System.out.println("xin moi nhap ma tuyen duong thu :" + (i + 1));
+                int routeID = new Scanner(System.in).nextInt();
+                do {
+                    if (RouteService.routeList.get(i) != null && RouteService.routeList.get(i).getRoute_ID() == routeID){
+                        break;
+                    }
+                    System.out.println("khong tim thay ma tuyen duong ban vua nhap, vui long nhap lai ");
+                }while (true);
+                System.out.println("tuyen duong vua nhap co co khoang cach la bao nhieu vay : ");
                 int distance = new Scanner(System.in).nextInt();
-                System.out.println("vui long nhap so diem dung trong quang duong tren : ");
+                System.out.println("tuyen duong ban nhap co bao nhieu diem dung :");
                 int numberOfBusStop = new Scanner(System.in).nextInt();
-                RouteService.routeList.add(new Route());
+                Route route = new Route(routeID,distance,numberOfBusStop);
 
-            }} else {
-                System.out.println(" xin vui long nhap lai so luong tuyen duong");
             }
         }while (true);
     }
 
     public static void showBusDriverManagement (){
-        for (BusDriverManagement busDriverManagement: Main.busDriverManagementList
+        for (BusDriverManagement busDriverManagement: busDriverManagementList
              ) {
             System.out.println(busDriverManagement);
+        }
+    }
+
+    public  static  void sortBusDriverManagent (){
+        System.out.println(" nhap lua cho cua ban : ");
+        System.out.println(" sap xep theo ho ten lai xe ");
+        System.out.println(" sap xep theo so luong tuyen giam dan ");
+        int choice  = 0;
+        do {
+            choice = new Scanner(System.in).nextInt();
+            if (choice == 1 || choice == 2 ){
+                break;
+            }
+            System.out.println("lua chon khong hop le vui long chon lai");
+        }while (true);
+        switch (choice){
+            case 1:
+                Collections.sort(busDriverManagementList, new Comparator<BusDriverManagement>() {
+                    @Override
+                    public int compare(BusDriverManagement o1, BusDriverManagement o2) {
+                        int cmp = o1.driver.getName().compareTo(o2.driver.getName());
+                        if (cmp >= 0){
+                            return -1;
+                        }
+                        return 1;
+                    }
+                });
+                showBusDriverManagement ();
+
+                break;
+            case 2:
+               Collections.sort(busDriverManagementList, new Comparator<BusDriverManagement>() {
+
+                   @Override
+                   public int compare(BusDriverManagement o1, BusDriverManagement o2) {
+                       return o1.route.toString().compareTo(o2.toString()) ;
+                   }
+               });
+                showBusDriverManagement ();
+                break;
+
         }
     }
 
