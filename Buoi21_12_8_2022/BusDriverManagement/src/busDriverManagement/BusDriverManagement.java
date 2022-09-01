@@ -137,17 +137,7 @@ public class BusDriverManagement {
         }while (true);
         switch (choice){
             case 1:
-                Collections.sort(busDriverManagementList, new Comparator<BusDriverManagement>() {
-                    @Override
-                    public int compare(BusDriverManagement o1, BusDriverManagement o2) {
-                        int cmp = o1.driver.getName().compareTo(o2.driver.getName());
-                        if (cmp >= 0){
-                            return -1;
-                        }
-                        return 1;
-                    }
-                });
-                showBusDriverManagement ();
+               busDriverManagementList.stream().sorted(Comparator.comparing(Driver::getName)).forEach(System.out::println);
 
                 break;
             case 2:

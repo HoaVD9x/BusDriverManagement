@@ -6,22 +6,29 @@ import busDriverManagement.RouteService;
 import driver.Driver;
 import route.Route;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-
-
-
-
-
-
-
-
-
     public static void main(String[] args) {
         menu();
+
+        Connection connection = null;
+
+        try{
+            Class.forName("org.mariadb.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mariadb://database-1.clicssmtjld8.ap-northeast-2.rds.amazonaws.com/classicmodels\", \"administrator\", \"6i6Z&9ooKjFK");
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
