@@ -35,7 +35,7 @@ public class Driver implements InputTable {
         this.driver_id = driver_id;
     }
 
-    public static String getName() {
+    public  String getName() {
         return name;
     }
 
@@ -130,4 +130,6 @@ public class Driver implements InputTable {
                 ", driverLevel=" + driverLevel +
                 '}';
     }
+
+
 }

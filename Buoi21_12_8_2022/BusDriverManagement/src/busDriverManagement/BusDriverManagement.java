@@ -137,7 +137,7 @@ public class BusDriverManagement {
         }while (true);
         switch (choice){
             case 1:
-               busDriverManagementList.stream().sorted(Comparator.comparing(Driver::getName)).forEach(System.out::println);
+           //   busDriverManagementList.stream().sorted(Comparator.comparing(Driver::getName));
 
                 break;
             case 2:
