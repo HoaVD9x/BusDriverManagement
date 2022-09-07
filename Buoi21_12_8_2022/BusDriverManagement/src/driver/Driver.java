@@ -1,11 +1,12 @@
 package driver;
 
+import busDriverManagementService.DriverService;
 import interFace.InputTable;
 
 import java.util.Scanner;
 
 public class Driver implements InputTable {
-    public static int driver_AutoID = 10000;
+
     private int driver_id;
 
     private String name;
@@ -69,7 +70,7 @@ public class Driver implements InputTable {
 
     @Override
     public void inputInfo() {
-        this.driver_id = Driver.driver_AutoID++;
+        this.setDriver_id(DriverService.generateId());
         System.out.println(" xin nhap ho va ten lai xe : ");
         this.name = new Scanner(System.in).nextLine();
         System.out.println(" xin moi nhap va dia chi cua lai xe : ");

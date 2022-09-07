@@ -1,4 +1,4 @@
-package busDriverManagement;
+package busDriverManagementService;
 
 import driver.Driver;
 import mainBusDriverManagent.Main;
@@ -50,7 +50,7 @@ public class DriverService {
 
     }
 
-    public static List<Driver> getDriverList (){
+    public static List<Driver> getDrivers (){
         return driverList;
     }
 

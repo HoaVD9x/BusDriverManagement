@@ -1,12 +1,13 @@
 package route;
 
+import busDriverManagementService.RouteService;
 import interFace.InputTable;
 
 import java.util.Scanner;
 
 public class Route implements InputTable {
 
-    public static int route_Auto_ID = 100;
+
 
     private  int route_ID;
 
@@ -49,7 +50,7 @@ public class Route implements InputTable {
 
     @Override
     public void inputInfo() {
-        this.route_ID = Route.route_Auto_ID++;
+        this.setRoute_ID(RouteService.generateId());
         System.out.println(" xin moi nhap khoang cach di chuyen ");
         this.distance = new Scanner(System.in).nextInt();
         System.out.println(" xin moi nhap so diem dung ");
